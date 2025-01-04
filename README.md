@@ -1,1 +1,1 @@
-# real-world
+# My dailypythonprojects.substack.com real world solutions
