@@ -3,7 +3,6 @@ Desktop app with a graphical user interface (GUI) getting any city name
 as input and outputs the current temperature for that city.
 """
 
-
 import requests
 import FreeSimpleGUI as sg
 
@@ -43,21 +42,24 @@ def temperature(city):
     return temp, fail
 
 
-if __name__ == '__main__':
-
-    layout = [[sg.Text('Enter City: '), sg.InputText(key='city')], [sg.Button('Get Weather'), sg.Button('Exit')], [sg.Text('Enter a city name', key='text')]]
-    window = sg.Window('Weather App', layout)
-
+if __name__ == "__main__":
+    layout = [
+        [sg.Text("Enter City: "), sg.InputText(key="city")],
+        [sg.Button("Get Weather"), sg.Button("Exit")],
+        [sg.Text("Enter a city name", key="text")],
+    ]
+    window = sg.Window("Weather App", layout)
 
     while True:
         event, values = window.read()
-        if event == sg.WIN_CLOSED or event == 'Exit':
+        if event == sg.WIN_CLOSED or event == "Exit":
             break
-        elif event == 'Get Weather':
-            city = values['city']
+        elif event == "Get Weather":
+            city = values["city"]
             temp, fail = temperature(city)
             if temp:
-                text = f'Current temperature in {city}: {temp}'
+                text = f"Current temperature in {city}: {temp}"
             else:
                 text = fail
-            window['text'].update(text)
+            window["text"].update(text)
+            window["city"].update("")
