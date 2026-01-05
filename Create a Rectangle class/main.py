@@ -5,6 +5,14 @@ class Rectangle:
         self.width = width
         self.height = height
 
+    def __str__(self):
+        return f'Rectangle({self.width}, {self.height})'
+
+    def __eq__(self, other):
+        if isinstance(other, Rectangle):
+            return self.width == other.width and self.height == other.height
+        return NotImplemented
+
     def area(self):
         return self.width * self.height
 
